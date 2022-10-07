@@ -230,11 +230,16 @@ def plot_6boxcharts(tracks_df, mainstay_df):
     df_features_stacked = df_features_stacked.reset_index()
     df_features_stacked = df_features_stacked.rename(columns={'level_2': 'feature'})
 
+    df_features_stacked['artist_name']=df_features_stacked['artist_name'].apply(lambda x: x if (x=="I Belong to the Zoo") else ( \
+                                                                            "Big3" if ((x=="Arthur Nery") | \
+                                                                           (x=="Adie") | (x=="Zack Tabudlo")) 
+                                                                                            else "Dominant Bands"))
+
     figure = plt.figure(figsize=(15, 6), dpi=200)
     ax = plt.subplot(111)
 
     sns.boxplot(data=df_features_stacked, x='feature', y='value',  hue='artist_name', ax=ax,
-                hue_order=['I Belong to the Zoo']+top5_names, palette=[COLOR4,COLOR1,COLOR5,"#F5CBA7","#F9E79F","#C39BD3"])
+                hue_order=['I Belong to the Zoo', 'Big3', 'Dominant Bands'], palette=[COLOR4,COLOR1,COLOR5,"#F5CBA7","#F9E79F","#C39BD3"])
 
 
     ax.legend(loc='upper center', bbox_to_anchor=(
