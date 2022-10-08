@@ -233,13 +233,12 @@ def recommender_engine():
     feature_cols = ['danceability', 'energy', 'loudness', 'speechiness', 'acousticness', 'instrumentalness',\
                 'liveness', 'valence', 'tempo']
     df = read_songs_reco()
-    with st.expander('Recommendation Dataframe'):
+    with st.expander('Recommended Artists Dataframe'):
         st.dataframe(df[['track_name','artist_name', 'predicted_genre', 'cosine_dist_mod2'] + feature_cols])
 
 def recommendations():
     st.title('The Playlist')
-    # components.iframe("https://open.spotify.com/embed/track/0G5qmu4TsdUH19zdcbI9Ui", height=80)
-    # components.iframe("https://open.spotify.com/embed/playlist/46AnEzYNyAJGwCHQRG5IT8", height=380, scrolling=True)
+    components.iframe("https://open.spotify.com/embed/playlist/20R3vDgunfzviJmCbJsh3e", height=380, scrolling=True)
 
 
 list_of_pages = [
